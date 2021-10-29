@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -15,4 +15,22 @@ export const GlobalStyle = createGlobalStyle`
   body {
     min-width: 400px;
   }
+`;
+
+export const Title = styled.h2`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: #111111;
+`;
+
+export const Element = styled.div<{
+  mt: number;
+}>`
+  margin-top: ${({ mt }) => mt}px;
 `;

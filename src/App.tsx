@@ -22,6 +22,7 @@ const Container = styled.div`
   margin: 0 auto;
   max-width: 650px;
   min-width: 360px;
+  padding: 0 10px;
 `;
 
 const Wrap = styled.div`

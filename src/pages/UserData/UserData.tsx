@@ -6,6 +6,10 @@ import { logger } from '../../utils/logger';
 import { Button } from '../../components/Button';
 import plusIcon from '../../assets/img/Union.svg';
 import { UserDataEntity, UserDataSchema } from '../../types/userData';
+import { useAppDispatch } from '../../store/hooks';
+import { appActions } from '../../store/app';
+import { getPathByName } from '../../router';
+import { Title, Element } from '../../GlobalStyles';
 import { getChildrenMaxId } from './helpers';
 
 const DEFAULT_INITIAL_VALUES: UserDataEntity = {
@@ -21,10 +25,15 @@ export const UserData: React.FC = () => {
     DEFAULT_INITIAL_VALUES,
   );
 
+  const dispatch = useAppDispatch();
+
   const formikConfig: FormikConfig<UserDataEntity> = {
     initialValues,
     onSubmit: (values) => {
       logger('UserData values:', values);
+      dispatch(appActions.setUserData(values));
+      const path = getPathByName('profile');
+      dispatch(appActions.redirect(path));
     },
     validationSchema: UserDataSchema,
     enableReinitialize: true,
@@ -184,24 +193,6 @@ const ChildWrap = styled.div`
 
 const Wrap = styled.div`
   padding: 30px;
-`;
-
-const Title = styled.h2`
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-
-  display: flex;
-  align-items: center;
-
-  color: #111111;
-`;
-
-const Element = styled.div<{
-  mt: number;
-}>`
-  margin-top: ${({ mt }) => mt}px;
 `;
 
 const Form = styled.form`

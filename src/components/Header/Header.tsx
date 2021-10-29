@@ -27,9 +27,12 @@ const Wrap = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0;
-  //height: 76px;
+  padding: 0 92px;
   align-items: center;
+
+  @media (max-width: 900px) {
+    padding: 0;
+  }
 `;
 
 const Logo = styled.img`

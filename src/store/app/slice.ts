@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UserDataEntity } from '../../types/userData';
 import { AppState } from './types';
 
 const APP_SLICE_NAME = 'app';
 
 const initialState: AppState = {
   redirectUrl: null,
+  userData: null,
 };
 
 export const appSlice = createSlice({
@@ -20,6 +22,10 @@ export const appSlice = createSlice({
       state.redirectUrl = {
         path: action.payload,
       };
+    },
+
+    setUserData: (state, action: PayloadAction<UserDataEntity | null>) => {
+      state.userData = action.payload;
     },
   },
 });
