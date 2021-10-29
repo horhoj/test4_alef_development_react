@@ -28,7 +28,7 @@ const Wrap = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 0;
-  height: 76px;
+  //height: 76px;
   align-items: center;
 `;
 
