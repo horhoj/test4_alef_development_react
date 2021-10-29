@@ -54,4 +54,9 @@ const Child = styled.div`
   background: #f1f1f1;
   border-radius: 5px;
   width: fit-content;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
 `;
