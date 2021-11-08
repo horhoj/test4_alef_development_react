@@ -6,8 +6,8 @@ import { logger } from '../../utils/logger';
 import { Button } from '../../components/Button';
 import plusIcon from '../../assets/img/Union.svg';
 import { UserDataEntity, UserDataSchema } from '../../types/userData';
-import { useAppDispatch } from '../../store/hooks';
-import { appActions } from '../../store/app';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { appActions, appSelectors } from '../../store/app';
 import { getPathByName } from '../../router';
 import { Title, Element } from '../../GlobalStyles';
 import { getChildrenMaxId } from './helpers';
@@ -21,8 +21,10 @@ const DEFAULT_INITIAL_VALUES: UserDataEntity = {
 const MAX_CHILD = 5;
 
 export const UserData: React.FC = () => {
+  const userData = useAppSelector(appSelectors.getUserData);
+
   const [initialValues, setInitialValues] = useState<UserDataEntity>(
-    DEFAULT_INITIAL_VALUES,
+    userData ? userData : DEFAULT_INITIAL_VALUES,
   );
 
   const dispatch = useAppDispatch();
